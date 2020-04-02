@@ -13,18 +13,15 @@ public class VerifIcation extends Login {
 		boolean found = false;
 		String tempName = "";
 		String tempPass = "";
-		File file = new File("‪C:\\Users\\Prabhat\\Desktop\\ProGrad.txt");
+		File file = new File("C:\\Users\\Prabhat/student.csv");
 		try {
 			 Scanner x = new Scanner(file);
 			x.useDelimiter("[,\n]");
-			while(x.hasNext() && !found) {
+			while(x.hasNext() && !found){
 				tempName = x.next();
 				tempPass = x.next();
-				
 				if(tempName.trim().equals(username) && tempPass.trim().equals(password)) {
 					found = true;
-				}else {
-					System.out.print("Invalid username or password");
 				}
 			}
 			x.close();
@@ -32,6 +29,11 @@ public class VerifIcation extends Login {
 		}
 		catch( Exception e) {
 			System.out.print(e.getMessage());
+		}
+		finally {
+			if(!found) {
+					System.out.println("Invalid username or password");
+			}
 		}
 		
 	}
@@ -51,6 +53,35 @@ public class VerifIcation extends Login {
 	@Override
 	public void newRegistration(String username, String password) {
 		// TODO Auto-generated method stub
+		
+	}
+	
+	public void verifyAdmin() {
+		boolean found = false;
+		String tempName = "";
+		String tempPass = "";
+		File file = new File("C:\\Users\\Prabhat/admin.csv");
+		try {
+			 Scanner x = new Scanner(file);
+			x.useDelimiter("[,\n]");
+			while(x.hasNext() && !found){
+				tempName = x.next();
+				tempPass = x.next();
+				if(tempName.trim().equals(username) && tempPass.trim().equals(password)) {
+					found = true;
+				}
+			}
+			x.close();
+			System.out.print("ADMIN PANEL LOGGED IN: ");
+		}
+		catch( Exception e) {
+			System.out.print(e.getMessage());
+		}
+		finally {
+			if(!found) {
+					System.out.println("Invalid username or password");
+			}
+		}
 		
 	}
 	

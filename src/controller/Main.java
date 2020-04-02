@@ -19,7 +19,7 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		
 		System.out.println("Welcome to ArtCart");
-		System.out.println("******* Choices *******");
+		System.out.println("******* MAIN MENU *******");
 		System.out.println("1. ADMIN LOGIN");
 		System.out.println("2. SIGN IN");
 		System.out.println("3. SIGN UP");
@@ -98,7 +98,7 @@ home.addPrice(price5);
 		/// loop for options
 		String yes;
 		do {
-			System.out.println("Enter your choice: ");
+			System.out.println("ENTER YOUR CHOICE : ");
 			choice =Integer.parseInt(br.readLine());
 		
 		
@@ -107,25 +107,32 @@ home.addPrice(price5);
 		case 1:
 			//// admin section
 			//// verify admin credentials
-//			System.out.println("Enter Username:");
-//			name = br.readLine().trim();
-//			System.out.println("Enter Password:");
-//			password = br.readLine().trim();
-//			Login verifyAdmin = new VerifIcation(name, password);
-//			verifyAdmin.setUsername(name);
-//			verifyAdmin.setPassword(password);
-//			verifyAdmin.verifyLogin();
+			System.out.println("ADMIN LOGIN");
+			System.out.println("********************************************");
+			System.out.println("Enter Username:");
+			name = br.readLine().trim();
+			System.out.println("Enter Password:");
+			password = br.readLine().trim();
+			System.out.println("********************************************");
+			Login verifyAdmin = new VerifIcation(name, password);
+			verifyAdmin.setUsername(name);
+			verifyAdmin.setPassword(password);
+			verifyAdmin.verifyAdmin();
 			
+			//// open admin panel in operation class
 			Operations adm = new Operations();
 			adm.admin();
 			break;
 		
 		case 2:
 			//// verify existing user 
-			System.out.println("Enter Username:");
+			System.out.println("USER LOGIN");
+			System.out.println("********************************************");
+			System.out.println("Enter Username : ");
 			name = br.readLine().trim();
-			System.out.println("Enter Password:");
+			System.out.println("Enter Password : ");
 			password = br.readLine().trim();
+			System.out.println("********************************************");
 			Login verify = new VerifIcation(name, password);
 			verify.setUsername(name);
 			verify.setPassword(password);
@@ -134,11 +141,13 @@ home.addPrice(price5);
 			
 		case 3:
 			//// new sign up
-			System.out.println("New Sign Up");
-			System.out.println("Enter Username:");
+			System.out.println("NEW SIGN UP");
+			System.out.println("********************************************");
+			System.out.println("Enter Username : ");
 			name = br.readLine().trim();
-			System.out.println("Enter Password:");
+			System.out.println("Enter Password : ");
 			password = br.readLine().trim();
+			System.out.println("********************************************");
 			
 			///  Registration 
 			Validation validate = new Validation(name, password);
@@ -149,8 +158,8 @@ home.addPrice(price5);
 			//// display user details
 			user.setUsername(name);
 			user.setPassword(password);
-			System.out.println(user.getUsername());
-			System.out.println(user.getPassword());
+			System.out.println("USER NAME : "+user.getUsername());
+			System.out.println("PASSWORD : "+user.getPassword());
 			break;
 			
 		case 5:
@@ -167,11 +176,11 @@ home.addPrice(price5);
 					n = Integer.parseInt(br.readLine().trim());
 					cartlist = home.addTocart(n,cartlist);
 				}catch(Exception e) {
-					System.out.println("NO Item selected.");
+					System.out.println("NO ITEM SELECTED.");
 				}
 				
-				System.out.println("press 1 for continue.");
-				System.out.println("press enter to exit.");
+				System.out.println("PRESS 1 FOR CONTINUE SHOPPING.");
+				System.out.println("PRESS ENTER TO GO MAIN MENU.");
 				try {
 					conti = Integer.parseInt(br.readLine().trim());
 				}catch(Exception e) {
@@ -188,10 +197,9 @@ home.addPrice(price5);
 					break;
 		
 		}
-		System.out.println("Do you want to continue: ");
+		System.out.println("DO YOU WANT TO CONTINUE : YES/NO? : ");
 		yes=br.readLine();
 		}while(yes.equals("yes"));
-		
-		
+	
 	}
 }

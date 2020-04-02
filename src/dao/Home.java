@@ -61,9 +61,10 @@ public class Home {
 		int lenOfList = list.size();
 				
 		// list- the custom arraylist is sent from - previous function
-		System.out.println("--------------------------------------------------------------------------------------------------|");
+		System.out.println("-----------------------------------------------------------------------------------------------------------------|");
 		System.out.println("Add Item to Cart by selecting - S.NO.");
-		System.out.println("--------------------------------------------------------------------------------------------------|");
+		System.out.println("-----------------------------------------------------------------------------------------------------------------|");
+		System.out.println("-----------------------------------------------------------------------------------------------------------------|");
 		System.out.println();
 		for (int i = 0; i < lenOfList; i++) 
         { 
@@ -79,7 +80,8 @@ public class Home {
             // artistname - String 
             // price - int 
             System.out.println("Painting Name : "+data.name+"  ||  "+"Artist Name : "+data.artname+"  ||  "+"Item Price : " +data.value+"\n");
-            System.out.println("--------------------------------------------------------------------------------------------------|");
+            System.out.println("-----------------------------------------------------------------------------------------------------------------|");
+            System.out.println("-----------------------------------------------------------------------------------------------------------------|");
         } 
 	}
 	
@@ -89,9 +91,11 @@ public class Home {
 		try{
 			// getting item ,add to cart
 			cartlist.add(new Data(name.get(itemNo),artistName.get(itemNo),price.get(itemNo)));
+			//// message 
+			System.out.println("ITEM No."+n+" Added in your CART.");
 			return cartlist;
 		}catch(Exception e) {
-			System.out.println("No item selected.");
+			System.out.println("NO ITEM SELECTED.");
 			return null;
 		}
 	}
@@ -109,15 +113,10 @@ public class Home {
 			}
 			System.out.println("TOTAL CART VALUE : "+cartTotal);
 		}catch(Exception e) {
-			System.out.println("CART is Empty.");
+			System.out.println("CART IS EMPTY.");
 		}
 		
 	}
-	
-	
-	
-	
-	
-	
-	}
+
+}
 	

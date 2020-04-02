@@ -14,6 +14,7 @@ public abstract class Login extends User {
 	public abstract boolean validatePass(String password);
 	public abstract boolean validateUserName(String username);
 	public abstract void verifyLogin();
+	public abstract void verifyAdmin();
 	
 	
 }

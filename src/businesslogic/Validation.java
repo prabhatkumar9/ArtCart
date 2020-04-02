@@ -134,7 +134,7 @@ public class Validation extends Login {
 
 	public  void appendStrToFile(String str) 
 	{ 
-		File file = new File("C:\\Users\\Prabhat\\Desktop\\ProGrad.txt");
+		File file = new File("C:\\Users\\Prabhat/student.csv");
 			try { 
 					// Open given file in append mode. 
 					BufferedWriter out = new BufferedWriter( 
@@ -143,9 +143,15 @@ public class Validation extends Login {
 							out.close(); 
 				} 
 				catch (IOException e) { 
-					System.out.println("exception occoured  " + e); 
+					System.out.println("INTERNAL ERROR  "); 
 				} 
-		} 
+		}
+
+	@Override
+	public void verifyAdmin() {
+		// TODO Auto-generated method stub
+		
+	} 
 	
 	
 	

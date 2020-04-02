@@ -30,7 +30,7 @@ public class Operations {
 		String yes;
 		do {
 			try {
-				System.out.println("Enter your option : ");
+				System.out.println("ENTER OPTION : ");
 				option = Integer.parseInt(br.readLine());
 			}catch(Exception e) {
 				System.out.println("Please enter a valid option.");
@@ -68,7 +68,7 @@ public class Operations {
 				break;
 			}
 			
-			System.out.println("Do you want to continue: ");
+			System.out.println("DO YOU WANT TO CONTINUE AS ADMIN : YES/NO? : ");
 			yes=br.readLine();
 			}while(yes.equals("yes"));
 		
