@@ -98,7 +98,7 @@ home.addPrice(price5);
 		/// loop for options
 		String yes;
 		do {
-			System.out.println("ENTER YOUR CHOICE : ");
+			System.out.print("ENTER YOUR CHOICE : ");
 			choice =Integer.parseInt(br.readLine());
 		
 		
@@ -172,6 +172,7 @@ home.addPrice(price5);
 				try {
 					/// calling add to cart method
 					/// taking input as s.no.
+					System.out.println();
 					System.out.print("ADD TO CART : ");
 					n = Integer.parseInt(br.readLine().trim());
 					cartlist = home.addTocart(n,cartlist);
@@ -180,11 +181,12 @@ home.addPrice(price5);
 				}
 				
 				System.out.println("PRESS 1 FOR CONTINUE SHOPPING.");
+				System.out.println();
 				System.out.println("PRESS ENTER TO GO MAIN MENU.");
 				try {
 					conti = Integer.parseInt(br.readLine().trim());
 				}catch(Exception e) {
-					System.out.println("Exited");
+					System.out.println("Main Menu");
 					break;
 				}
 			}while(conti == 1); 
@@ -197,7 +199,8 @@ home.addPrice(price5);
 					break;
 		
 		}
-		System.out.println("DO YOU WANT TO CONTINUE : YES/NO? : ");
+		System.out.println();
+		System.out.print("DO YOU WANT TO CONTINUE : YES/NO? : ");
 		yes=br.readLine();
 		}while(yes.equals("yes"));
 	

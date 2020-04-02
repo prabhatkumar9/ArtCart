@@ -61,10 +61,10 @@ public class Home {
 		int lenOfList = list.size();
 				
 		// list- the custom arraylist is sent from - previous function
-		System.out.println("-----------------------------------------------------------------------------------------------------------------|");
+		System.out.println("******************************************************************************************************************|");
 		System.out.println("Add Item to Cart by selecting - S.NO.");
-		System.out.println("-----------------------------------------------------------------------------------------------------------------|");
-		System.out.println("-----------------------------------------------------------------------------------------------------------------|");
+		System.out.println("*-----------------------------------------------------------------------------------------------------------------|");
+		System.out.println("******************************************************************************************************************|");
 		System.out.println();
 		for (int i = 0; i < lenOfList; i++) 
         { 
@@ -80,8 +80,7 @@ public class Home {
             // artistname - String 
             // price - int 
             System.out.println("Painting Name : "+data.name+"  ||  "+"Artist Name : "+data.artname+"  ||  "+"Item Price : " +data.value+"\n");
-            System.out.println("-----------------------------------------------------------------------------------------------------------------|");
-            System.out.println("-----------------------------------------------------------------------------------------------------------------|");
+            System.out.println("******************************************************************************************************************|");
         } 
 	}
 	
@@ -93,9 +92,11 @@ public class Home {
 			cartlist.add(new Data(name.get(itemNo),artistName.get(itemNo),price.get(itemNo)));
 			//// message 
 			System.out.println("ITEM No."+n+" Added in your CART.");
+			System.out.println();
 			return cartlist;
 		}catch(Exception e) {
 			System.out.println("NO ITEM SELECTED.");
+			System.out.println();
 			return null;
 		}
 	}
@@ -106,14 +107,17 @@ public class Home {
 			int lenOfList = cartlist.size();
 			int cartTotal = 0; 
 			System.out.println("ITEMS IN CART : ");
+			System.out.println();
 			for (int i = 0; i < lenOfList; i++) {
 				Data data = cartlist.get(i);
 				cartTotal = cartTotal+data.value;
 				System.out.println("Painting Name : "+data.name+"\n"+"Artist Name : "+data.artname+"\n"+"Item Price : " +data.value+"\n");
 			}
 			System.out.println("TOTAL CART VALUE : "+cartTotal);
+			System.out.println();
 		}catch(Exception e) {
 			System.out.println("CART IS EMPTY.");
+			System.out.println();
 		}
 		
 	}

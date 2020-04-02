@@ -25,15 +25,15 @@ public class VerifIcation extends Login {
 				}
 			}
 			x.close();
-			System.out.print("Successful Login: ");
+			if(found) {
+				System.out.print("Successful Login: ");
+			}
+			if(!found) {
+				System.out.println("Invalid username or password");
+		}
 		}
 		catch( Exception e) {
 			System.out.print(e.getMessage());
-		}
-		finally {
-			if(!found) {
-					System.out.println("Invalid username or password");
-			}
 		}
 		
 	}
