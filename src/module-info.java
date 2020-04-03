@@ -1,2 +1,1 @@
-module artCart {
-}
+package artCart;

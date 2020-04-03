@@ -5,18 +5,21 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Validation extends Login {
+import model.User;
+
+public class Validation extends User {
 	
 //	private Pattern pattern;
 //	private Matcher matcher;
 //	private static final String passPattern = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20}";
 //	private static final String namePattern = "^(.+)@(.+)$";
 	
-	public Validation(String username, String password) {
-		super(username, password);
+	public Validation(String username, String password,String email ,String gender, int age,long fnumber, String address) {
+		super(username, password,email,gender,age,fnumber,address);
 		
 	}
 
+	//// checking username and password for new registration
 	public boolean checkUserDetails(String username, String password) {
 		boolean name = false;
 		boolean pass = false;
@@ -34,6 +37,7 @@ public class Validation extends Login {
 		}
 	}
 	
+	/// validate required length of password
 	public boolean validatePass(String password) {
 		if(password.length() >6) {
 			if(checkPass(password)) {
@@ -48,11 +52,9 @@ public class Validation extends Login {
 			return false;
 		}
 	}
-	
-	
-	
+
+	/// validate required length of username
 	public boolean validateUserName(String username) {
-		
 		if(username.length() >5) {
 			if(checkName(username)) {
 				return true;
@@ -64,10 +66,10 @@ public class Validation extends Login {
 		}else {
 			System.out.println("Username must have more than five charaters");
 			return false;
-		}
-		
+		}	
 	}
 	
+	//// validate name 
 	public boolean checkName(String  username) {
 		boolean hasCap = false;
 		boolean hasLow = false;
@@ -88,7 +90,7 @@ public class Validation extends Login {
 	}
 	
 	
-	
+	//// VALIDATE PASSWORD
 	public boolean checkPass(String password) {
 		
 		boolean hasNum = false;
@@ -115,26 +117,24 @@ public class Validation extends Login {
 
 	@Override
 	public void verifyLogin() {
-		// TODO Auto-generated method stub
-		
 	}
 
+	/// NEW REGISTRATION 
 	@Override
-	public void newRegistration(String username, String password) {
-		
+	public void newRegistration(String username, String password,String email ,String gender,int age,long fnumber, String address){		
 		if(checkUserDetails(username,password)) {
-			String str = ("\n"+username +","+ password);
-			/// write user name and password in file 
+			String str = ("\n"+username +","+ password+","+email+","+gender+","+age+","+fnumber+","+address);
+			/// write user details in file 
 			appendStrToFile(str);
 			System.out.println("New user registration successful.");
-			
+			System.out.println("YOU HAVE TO SIGN IN NOW TO CONTINUE SHOPPING.");
 		}
 	}
 
-
+	/// APPEND new registered details in file
 	public  void appendStrToFile(String str) 
 	{ 
-		File file = new File("C:\\Users\\Prabhat/student.csv");
+		File file = new File("C:\\Users\\Prabhat/USER.csv");
 			try { 
 					// Open given file in append mode. 
 					BufferedWriter out = new BufferedWriter( 
@@ -144,15 +144,10 @@ public class Validation extends Login {
 				} 
 				catch (IOException e) { 
 					System.out.println("INTERNAL ERROR  "); 
-				} 
+				}  
 		}
 
 	@Override
-	public void verifyAdmin() {
-		// TODO Auto-generated method stub
-		
-	} 
-	
-	
-	
+	public void verifyAdmin() {	
+	} 	
 }

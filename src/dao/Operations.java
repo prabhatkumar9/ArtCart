@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 public class Operations {
 	
 
-///// main function
+	///// main function
 	public void admin() throws Exception{
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

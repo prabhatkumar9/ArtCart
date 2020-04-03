@@ -5,7 +5,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import businesslogic.Login;
 import businesslogic.Validation;
 import businesslogic.VerifIcation;
 import dao.Data;
@@ -14,20 +13,17 @@ import dao.Operations;
 import model.User;
 
 public class Main {
-	
-	
+
 	public static void main(String[] args) throws Exception {
-		
-		System.out.println("Welcome to ArtCart");
-		System.out.println("******* MAIN MENU *******");
-		System.out.println("1. ADMIN LOGIN");
-		System.out.println("2. SIGN IN");
-		System.out.println("3. SIGN UP");
-		System.out.println("4. DISPLAY USER DETAILS");
-		System.out.println("5. HOME ");
-		System.out.println("6. Go To Cart");
+		System.out.println("********Welcome to ArtCart********");
 		String password=null;
 		String name = null;
+		String email = null;
+		String gender = null;
+		int age = 0;
+		String address = null;
+		String pay;
+		long number = 0;
 		
 		/// home page object
 		Home home = new Home();
@@ -71,12 +67,16 @@ home.addPrice(price2);
 home.addPrice(price3);
 home.addPrice(price4);
 home.addPrice(price5);
-
 //////////////////////////////////////////////////////////////////////////////////////
 		
 		/// item no
 		int n = 0;
-		
+
+		/// user objectS
+		User validate = new Validation(name, password,email,gender,age,number,address);
+		User verifyAdmin = new VerifIcation(name, password);
+		User verify = new VerifIcation(name, password);
+
 		int conti = 0;
 		
 		/// initial list
@@ -90,18 +90,23 @@ home.addPrice(price5);
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		//// options to select
 		int choice = 0;
-		
-		/// user object 
-		User user = new User();
-		
-		
+
 		/// loop for options
 		String yes;
 		do {
+			System.out.println();
+			System.out.println("******* MAIN MENU *******");
+			System.out.println("1. ADMIN LOGIN");
+			System.out.println("2. LOGIN IN");
+			System.out.println("3. SIGN UP");
+			System.out.println("4. DISPLAY USER DETAILS");
+			System.out.println("5. HOME ");
+			System.out.println("6. GO TO CART");
+			System.out.println("*************************");
+			System.out.println();
 			System.out.print("ENTER YOUR CHOICE : ");
-			choice =Integer.parseInt(br.readLine());
-		
-		
+			choice =Integer.parseInt(br.readLine().trim());
+
 		switch(choice) {
 		
 		case 1:
@@ -114,7 +119,6 @@ home.addPrice(price5);
 			System.out.println("Enter Password:");
 			password = br.readLine().trim();
 			System.out.println("********************************************");
-			Login verifyAdmin = new VerifIcation(name, password);
 			verifyAdmin.setUsername(name);
 			verifyAdmin.setPassword(password);
 			verifyAdmin.verifyAdmin();
@@ -133,7 +137,6 @@ home.addPrice(price5);
 			System.out.println("Enter Password : ");
 			password = br.readLine().trim();
 			System.out.println("********************************************");
-			Login verify = new VerifIcation(name, password);
 			verify.setUsername(name);
 			verify.setPassword(password);
 			verify.verifyLogin();
@@ -147,23 +150,37 @@ home.addPrice(price5);
 			name = br.readLine().trim();
 			System.out.println("Enter Password : ");
 			password = br.readLine().trim();
+			System.out.println("Enter Email : ");
+			email = br.readLine().trim();
+			System.out.println("Enter Gender : ");
+			gender = br.readLine().trim();
+			System.out.println("Enter Age : ");
+			age = Integer.parseInt(br.readLine().trim());
+			System.out.println("Enter Mobile Number : ");
+			number = Long.parseLong(br.readLine().trim());
+			System.out.println("Enter Address : ");
+			address = br.readLine().trim();
 			System.out.println("********************************************");
-			
-			///  Registration 
-			Validation validate = new Validation(name, password);
-			validate.newRegistration(name ,password);
+			///  Registration
+			validate.newRegistration(name ,password,email,gender,age,number,address);
 			break;
 			
 		case 4:
 			//// display user details
-			user.setUsername(name);
-			user.setPassword(password);
-			System.out.println("USER NAME : "+user.getUsername());
-			System.out.println("PASSWORD : "+user.getPassword());
+			System.out.println();
+			System.out.println("USER DETAILS....");
+			System.out.println("***********************************************************|");
+			System.out.println("=> USER NAME     :  "+verify.getUsername());
+			System.out.println("=> EMAIL ADDRESS :  "+verify.getEmail());
+			System.out.println("=> MOBILE NUMBER :  "+verify.getNumber());
+			System.out.println("=> PASSWORD      :  "+verify.getPassword());
+			System.out.println("=> GENDER        :  "+verify.getGender());
+			System.out.println("=> AGE           :  "+verify.getAge());
+			System.out.println("=> ADDRESS       :  "+verify.getAddress());
+			System.out.println("***********************************************************|");
 			break;
 			
 		case 5:
-			/// display home
 			do {
 				// display home page
 				Home detail = new Home();
@@ -179,14 +196,13 @@ home.addPrice(price5);
 				}catch(Exception e) {
 					System.out.println("NO ITEM SELECTED.");
 				}
-				
 				System.out.println("PRESS 1 FOR CONTINUE SHOPPING.");
 				System.out.println();
 				System.out.println("PRESS ENTER TO GO MAIN MENU.");
 				try {
 					conti = Integer.parseInt(br.readLine().trim());
 				}catch(Exception e) {
-					System.out.println("Main Menu");
+					
 					break;
 				}
 			}while(conti == 1); 
@@ -196,6 +212,17 @@ home.addPrice(price5);
 			/// got to cart
 			//// Display cart
 					home.displayCart(cartlist);
+					System.out.print("DO YOU WANT TO PLACE ORDER : YES/NO? : ");
+					pay=br.readLine();
+					System.out.println();
+					if(pay.equals("yes")) {
+						String bname = verify.getUsername();
+						String badd = verify.getAddress();
+						String ml = verify.getEmail();
+						long fno = verify.getNumber();
+						home.placeOrder(cartlist,bname,ml,badd,fno);
+						System.out.println("******Order Placed Thankyou For Shopping.*****");
+					}
 					break;
 		
 		}
